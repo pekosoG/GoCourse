@@ -49,10 +49,12 @@ var message = "Hello Go World"
 ```
 
 We can even go a step further and declare a variable without the *var* keyword:
+
 ```
 message := "Hello Go World"
 
 a,b,c := 1, false, "String!"  //This even works with multiple declaration in one line
+
 ```
 
 #### Pointers
