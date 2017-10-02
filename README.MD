@@ -79,6 +79,32 @@ fmt.Println(someString,&somePointer)  //This would print something like "hi ther
 
 ```
 
+#### User Types
+---------
+Remember Structs on C/C++ ? well, they are back!!
 
+You can define your own type of variable/object in order to gather the values that you need in a single instance/object.
+This User Type can be accessed from outside the package *only if* you define it with a Capital, otherwise it will be private
 
+```
+type MyStruct struct{
+	name string
+	lastName string
+}
+```
+
+This Types can be initialized in three different ways:
+
+```
+var myVar = MyStruct{"el Name","el LastName"}
+var myVar2 = MyStruct{lastName:"el LastName",name:"el Name"}
+var myVar3 = MyStruct{}
+```
+
+To get and set the values we just do as follow:
+```
+
+myVar.name = "El Name"  //To Set
+fmt.Println(myVar.lastName) //To get and print it
+```
 
