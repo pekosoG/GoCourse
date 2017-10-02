@@ -27,8 +27,9 @@ func main ()       //Thanks God!
 
 }
 
-```
-
+``
+#### Variables
+---------
 Variables should be defined with the Type after it:
 
 ```
@@ -36,7 +37,7 @@ var message string = "Hello Go World"
 
 ```
 
-We also can define multiple variables at the same line, as well with their vlues:
+We also can define multiple variables at the same line, as well with their values:
 
 ```
 var a,b,c int = 1,2,3
@@ -53,3 +54,28 @@ message := "Hello Go World"
 
 a,b,c := 1, false, "String!"  //This even works with multiple declaration in one line
 ```
+
+#### Pointers
+----------
+Pointers behave as the old fashion C/C++ where:
+- they have to be defined as a pointer of the variable type using an asterisk (*)
+- you can set/access the actual value of the variable using ampersand (&)
+- you can alter the value of the variable using the pointer
+
+```
+var someString = "the value"
+var *somePointer = &someString  //Setting the pointer
+
+fmt.Println(someString,somePointer)  //This would print something like "the value 0xc42000e1d0"
+fmt.Println(someString,&somePointer)  //This would print something like "the value the value"
+
+*somePointer = "hi there"  //We modify the value of the address
+
+fmt.Println(someString,somePointer)  //This would print something like "hi there 0xc42000e1d0"
+fmt.Println(someString,&somePointer)  //This would print something like "hi there hi there"
+
+```
+
+
+
+

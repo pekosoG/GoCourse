@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import  "fmt"
 
 func main()  {
 	//Go Declares types after the variable
@@ -23,5 +23,15 @@ func main()  {
 	x,y,z:= 2, false, "zZz"
 
 	fmt.Println(messagePoints,x,y,z)
+
+	//Pointers behave as usual
+	var greeting *string = &message
+
+	fmt.Println(message,greeting) //Prints the address
+	fmt.Println(message,*greeting) //prints the value
+
+	*greeting = "Hi" //We modify the value of the actual message variable
+
+	fmt.Println(message,*greeting) //prints the new value
 
 }
