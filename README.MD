@@ -22,7 +22,7 @@ func main (){
 
 }
 
-func main ()       //Thanks God!
+func main ()       //This will fail... Thanks God!
 {
 
 }
@@ -108,3 +108,19 @@ myVar.name = "El Name"  //To Set
 fmt.Println(myVar.lastName) //To get and print it
 ```
 
+#### Constants
+----------
+
+You can define constants to have read-only values for your program:
+
+```
+const PI=3.14
+```
+
+You can also define a set of constants using parenthesis to group them:
+ ```
+ const (
+    PI=3.14
+    Lang="Go"
+ )
+```

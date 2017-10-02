@@ -14,6 +14,18 @@ type SalutationStruct struct{
 	greeting string
 }
 
+//constants can be defined inside a Parenthesis to avoid writing const multiple times
+const (
+	PI = 3.14
+	Lang = "Go"
+)
+
+const (
+	A = iota 	//iota represents successive untyped integers
+	B			// if you do not define a type, Go assumes that it the same as the last one
+	C			// So B and C would be the same as A, which is iota
+)
+
 
 func main()  {
 	//Go Declares types after the variable
@@ -67,4 +79,8 @@ func main()  {
 	phraseStruct = SalutationStruct{}
 	phraseStruct.name="PekosoG"
 	phraseStruct.greeting="Hello There"
+
+	fmt.Println(PI)
+	fmt.Println(Lang)
+	fmt.Println(A,B,C)
 }
