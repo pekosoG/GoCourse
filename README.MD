@@ -27,7 +27,7 @@ func main ()       //Thanks God!
 
 }
 
-``
+```
 
 Variables should be defined with the Type after it:
 
