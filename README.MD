@@ -141,7 +141,7 @@ func myfunction(parameter <type>) <return-type>{
 #### *But wait!*
 Go have some new interesting features with the functions like:
 
-*Multiple Returns*
+**Multiple Returns**
 
 We can return two or more values from a single function:
 ```
@@ -150,7 +150,8 @@ func myFunction(parameter <type>)(<return-type>,<return-type>...){
     return <value1>,<value2>
 }
 ```
-*Multiple Named Returns*
+**Multiple Named Returns**
+
 To avoid confusions on the multiple returns, we can name them and assign the value to a variable that will be returned
 at the end of the function:
 ```
@@ -163,7 +164,8 @@ func myFunction(parameter <type>)(<variable1> <return-type>,<variable2> <return-
             // variable that is defined into the method signature
 }
 ```
-*Variadic Functions*
+**Variadic Functions**
+
 That's just a fancy name to say _I might not know how many parameter my function will handle_ and the syntax is:
 
 ```
@@ -174,7 +176,8 @@ func myFunction(parameter ...<type>){
 }
 ```
 
-*Passing a Function*
+**Passing a Function**
+
 Or known as _Higher Order Functions_, if you want to pass a function to another function, you can just treat it as any other object
 
 ```
@@ -185,7 +188,8 @@ func myFunction(<function_alias> func(<parameter-type>), parameter <type>){
 
 ```
 
-*Function Type*
+**Function Type**
+
 This is too similar to Passing a Function, but instead of having an _unknown_ function, we can define the
 signature of the function that can be sent as a parameter:
 ```
