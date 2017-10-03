@@ -5,7 +5,7 @@ import  "fmt"
 
 
 //This is the same type as string, but with our own name
-type Salutation string
+type salutation string
 
 //Or we can define our Structure/Object, since Go does not have Classes as everyone else
 //Also, this struct is public visible since it starts on Capital instead lowercase
@@ -59,7 +59,7 @@ func main()  {
 
 	fmt.Println(message,*greeting) //prints the new value
 
-	var phrase Salutation = "Hello World Salutation"
+	var phrase salutation = "Hello World Salutation"
 	fmt.Println(phrase)
 
 	//In here we can initialize our variable sending the parameters while initializing

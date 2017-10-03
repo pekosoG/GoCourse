@@ -124,3 +124,43 @@ You can also define a set of constants using parenthesis to group them:
     Lang="Go"
  )
 ```
+
+#### Functions
+--------
+Functions is Go are pretty normal, they are basically a piece of code that you might use multiple times and you write it
+wrapped with a name, so you can call/use it everywhere.
+
+The basic syntax is:
+```
+func myfunction(parameter <type>) <return-type>{
+    //Some code
+    return <value>
+}
+```
+
+#### *But wait!*
+Go have some new interesting features with the functions like:
+
+*Multiple Returns*
+
+We can return two or more values from a single function:
+```
+func myFunction(parameter <type>)(<return-type>,<return-type>...){
+    //Some Code
+    return <value1>,<value2>
+}
+```
+*Multiple Named Returns*
+To avoid confusions on the multiple returns, we can name them and assign the value to a variable that will be returned
+at the end of the function:
+```
+func myFunction(parameter <type>)(<variable1> <return-type>,<variable2> <return-type>){
+    //Some Code
+    <variable1>=value
+    //Some more code
+    <variable2>=value
+    return  // We do not need to explicitly return the values in this line because we are setting the return value to a
+            // variable that is defined into the method signature
+}
+
+```
