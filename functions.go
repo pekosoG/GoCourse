@@ -29,6 +29,8 @@ func Greet(salute Salute){
 	CreatePassingMessage(printText,salute.name,salute.greeting)
 
 	CreateFuntionTypeMessage(printText,salute.name,salute.greeting)
+
+	CreateFuntionTypeMessage(createPrintFunction("Hail Hydra"),salute.name,salute.greeting)
 }
 
 func CreateMessage(name, greeting string) string{
@@ -65,6 +67,12 @@ func CreateFuntionTypeMessage(do Printer, name string, greeting... string){
 
 func printText(text string){
 	fmt.Println(text)
+}
+
+func createPrintFunction(custom string) Printer{
+	return func(text string){
+		fmt.Println(text + " "+custom)
+	}
 }
 
 
