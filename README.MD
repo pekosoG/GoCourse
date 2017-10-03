@@ -178,5 +178,7 @@ func myFunction(parameter ...<type>){
 Or known as _Higher Order Functions_, if you want to pass a function to another function, you can just treat it as any other object
 
 ```
-
+my function(<function_alias> func(<parameter-type>), parameter <type>){
+    <function_alias>(parameter)
+}
 ```
