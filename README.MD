@@ -162,5 +162,14 @@ func myFunction(parameter <type>)(<variable1> <return-type>,<variable2> <return-
     return  // We do not need to explicitly return the values in this line because we are setting the return value to a
             // variable that is defined into the method signature
 }
+```
+*Variadic Functions*
+That's just a fancy name to say _I might not know how many parameter my function will handle_ and the syntax is:
 
+```
+func myFunction(parameter ...<type>){
+    //Some Code
+    value= parameter[<position>]  // With Variadic functions, the unknown parameters arrive as an array and we can access
+                                  // the values using an index
+}
 ```

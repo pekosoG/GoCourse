@@ -20,6 +20,9 @@ func Greet(salute Salute){
 	_, alternateNamedMessage:= CreateDoubleNamedMessage(salute.name,salute.greeting)
 	fmt.Println(message)
 	fmt.Println(alternateNamedMessage)
+
+	_, alternateVariadicMessage:= CreateVariadicMessage(salute.name, salute.greeting, "What's up")
+	fmt.Println(alternateVariadicMessage)
 }
 
 func CreateMessage(name, greeting string) string{
@@ -35,6 +38,14 @@ func CreateDoubleNamedMessage(name, greeting string)(message, alternate string){
 	alternate= "HEY "+name+"!!!!"
 	return
 }
+
+func CreateVariadicMessage(name string, greeting ... string)(message string, alternative string){
+	fmt.Println(len(greeting)) // We can validate the length of the array of parameters.
+	message= greeting[0]+" "+name
+	alternative= greeting[1]+" "+name
+	return
+}
+
 
 func main(){
 	var salute = Salute{"Pekoso","Hello there"}
