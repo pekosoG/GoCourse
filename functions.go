@@ -23,6 +23,8 @@ func Greet(salute Salute){
 
 	_, alternateVariadicMessage:= CreateVariadicMessage(salute.name, salute.greeting, "What's up")
 	fmt.Println(alternateVariadicMessage)
+
+	CreatePassingMessage(printText,salute.name,salute.greeting)
 }
 
 func CreateMessage(name, greeting string) string{
@@ -44,6 +46,16 @@ func CreateVariadicMessage(name string, greeting ... string)(message string, alt
 	message= greeting[0]+" "+name
 	alternative= greeting[1]+" "+name
 	return
+}
+
+func CreatePassingMessage( do func(string), name string, greeting ...string){	// We can not set a function as a parameter
+																				// after a variadic parameter
+	text:= greeting[0]+ " "+name
+	do(text)
+}
+
+func printText(text string){
+	fmt.Println(text)
 }
 
 

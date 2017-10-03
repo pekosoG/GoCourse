@@ -173,3 +173,10 @@ func myFunction(parameter ...<type>){
                                   // the values using an index
 }
 ```
+
+*Passing a Function*
+Or known as _Higher Order Functions_, if you want to pass a function to another function, you can just treat it as any other object
+
+```
+
+```
