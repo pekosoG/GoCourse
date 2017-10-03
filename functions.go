@@ -6,6 +6,8 @@ type Salute struct{
 	name, greeting string
 }
 
+type Printer func(string)()
+
 func Greet(salute Salute){
 	fmt.Println(CreateMessage(salute.name,salute.greeting))
 
@@ -25,6 +27,8 @@ func Greet(salute Salute){
 	fmt.Println(alternateVariadicMessage)
 
 	CreatePassingMessage(printText,salute.name,salute.greeting)
+
+	CreateFuntionTypeMessage(printText,salute.name,salute.greeting)
 }
 
 func CreateMessage(name, greeting string) string{
@@ -50,6 +54,11 @@ func CreateVariadicMessage(name string, greeting ... string)(message string, alt
 
 func CreatePassingMessage( do func(string), name string, greeting ...string){	// We can not set a function as a parameter
 																				// after a variadic parameter
+	text:= greeting[0]+ " "+name
+	do(text)
+}
+
+func CreateFuntionTypeMessage(do Printer, name string, greeting... string){
 	text:= greeting[0]+ " "+name
 	do(text)
 }

@@ -178,7 +178,20 @@ func myFunction(parameter ...<type>){
 Or known as _Higher Order Functions_, if you want to pass a function to another function, you can just treat it as any other object
 
 ```
-my function(<function_alias> func(<parameter-type>), parameter <type>){
+func myFunction(<function_alias> func(<parameter-type>), parameter <type>){
     <function_alias>(parameter)
+}
+
+
+```
+
+*Function Type*
+This is too similar to Passing a Function, but instead of having an _unknown_ function, we can define the
+signature of the function that can be sent as a parameter:
+```
+type <type-name> func(<param-type>)() //With empty parenthesis to show there's no return value
+
+func myFunction(<function-alias> <type-name>, param <type>){
+    <funtion-alias>(param)
 }
 ```
