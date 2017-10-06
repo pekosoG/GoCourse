@@ -6,10 +6,6 @@ import (
 	"time"
 )
 
-func helloWorld(rw http.ResponseWriter, req *http.Request){
-	fmt.Fprintf(rw,"<h1>Hello World GoLan</h1>")
-}
-
 func testRoute(rw http.ResponseWriter, req *http.Request){
 	fmt.Fprintf(rw,"<h1>Testing routing!</h1>")
 }
@@ -31,9 +27,11 @@ func(msg message) ServeHTTP(resp http.ResponseWriter, req *http.Request){
 
 func main(){
 
-	routerMux:= http.NewServeMux();
+	routerMux:= http.NewServeMux()
 
-	routerMux.HandleFunc("/",helloWorld)
+	staticFiles:= http.FileServer(http.Dir("public"))
+
+	routerMux.Handle("/",staticFiles)
 
 	routerMux.HandleFunc("/test",testRoute)
 
