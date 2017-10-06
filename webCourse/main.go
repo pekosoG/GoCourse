@@ -3,6 +3,7 @@ package main
 import (
 	"net/http"
 	"fmt"
+	"time"
 )
 
 func helloWorld(rw http.ResponseWriter, req *http.Request){
@@ -45,5 +46,13 @@ func main(){
 	 */
 	routerMux.Handle("/hello",someMessage)
 
-	http.ListenAndServe(":8080",routerMux)
+	server := http.Server{
+		Addr: ":8080",
+		Handler:routerMux,
+		ReadTimeout:10 * time.Second,
+		WriteTimeout: 10 * time.Second,
+		MaxHeaderBytes: 1 << 20,
+	}
+
+	server.ListenAndServe()
 }
