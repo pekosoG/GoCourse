@@ -6,6 +6,7 @@ import (
 	"time"
 	"log"
 	"encoding/json"
+	"strconv"
 )
 
 type Note struct{
@@ -16,12 +17,12 @@ type Note struct{
 
 var noteStore = make(map[string]Note)
 
-var id int
+var id int = 0
 
 func getNotesHandler(resp http.ResponseWriter, req *http.Request){
 
 	var notes[]Note
-	for _, note := range noteStore{
+	for _,note := range noteStore{
 		notes = append(notes,note)
 	}
 
@@ -34,11 +35,32 @@ func getNotesHandler(resp http.ResponseWriter, req *http.Request){
 
 	resp.WriteHeader(http.StatusOK)
 	resp.Write(jsonResp)
-
 }
 
 func createNotesHandler(resp http.ResponseWriter, req *http.Request){
 
+	log.Println("Got a Get Call")
+	var note Note
+	error := json.NewDecoder(req.Body).Decode(&note)
+
+	if error != nil{
+		panic(error)
+	}
+
+	note.createdAt=time.Now()
+
+	log.Println("Before adding: ",len(noteStore))
+
+	id++
+	noteStore[strconv.Itoa(id)]=note
+
+	log.Println("Note Added: ",len(noteStore))
+	resp.Header().Set("Content-Type","application/json")
+	resp.WriteHeader(http.StatusCreated)
+
+	var jsonResp,_ = json.Marshal(note)
+
+	resp.Write(jsonResp)
 }
 
 func updateNotesHandler(resp http.ResponseWriter, req *http.Request){
