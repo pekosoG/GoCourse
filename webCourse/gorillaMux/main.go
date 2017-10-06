@@ -4,32 +4,59 @@ import (
 	"github.com/gorilla/mux"
 	"net/http"
 	"time"
-	"fmt"
+	"log"
+	"encoding/json"
 )
 
-func GetUsers(resp http.ResponseWriter, req *http.Request){
-	fmt.Fprintf(resp,"Get Users")
+type Note struct{
+	title string `json: "title"`
+	description string `json: "description"`
+	createdAt time.Time `json: "created_at"`
 }
 
-func PostUsers(resp http.ResponseWriter, req *http.Request){
-	fmt.Fprintf(resp,"Post Users")
+var noteStore = make(map[string]Note)
+
+var id int
+
+func getNotesHandler(resp http.ResponseWriter, req *http.Request){
+
+	var notes[]Note
+	for _, note := range noteStore{
+		notes = append(notes,note)
+	}
+
+	resp.Header().Set("Content-Type","application/json")
+	jsonResp, error := json.Marshal(notes)
+
+	if error!=nil {
+		panic(error)
+	}
+
+	resp.WriteHeader(http.StatusOK)
+	resp.Write(jsonResp)
+
 }
 
-func PutUsers(resp http.ResponseWriter, req *http.Request){
-	fmt.Fprintf(resp,"Put Users")
+func createNotesHandler(resp http.ResponseWriter, req *http.Request){
+
 }
 
-func DeleteUsers(resp http.ResponseWriter, req *http.Request){
-	fmt.Fprintf(resp,"Delete Users")
+func updateNotesHandler(resp http.ResponseWriter, req *http.Request){
+
 }
+
+func deleteNotesHandler(resp http.ResponseWriter, req *http.Request){
+
+}
+
 
 func main(){
 	router := mux.NewRouter().StrictSlash(false)
 
-	router.HandleFunc("/api/users",GetUsers).Methods("GET")
-	router.HandleFunc("/api/users",PostUsers).Methods("POST")
-	router.HandleFunc("/api/users",PutUsers).Methods("PUT")
-	router.HandleFunc("/api/users",DeleteUsers).Methods("DELETE")
+	router.HandleFunc("/api/notes", getNotesHandler).Methods("GET")
+	router.HandleFunc("/api/notes", createNotesHandler).Methods("POST")
+	router.HandleFunc("/api/notes/{id}", updateNotesHandler).Methods("PUT")
+	router.HandleFunc("/api/notes/{id}", deleteNotesHandler).Methods("DELETE")
 
 	server := http.Server{
 		Addr: ":8080",
@@ -39,5 +66,6 @@ func main(){
 		MaxHeaderBytes: 1 << 20,
 	}
 
+	log.Println("Listening localhots:8080")
 	server.ListenAndServe()
 }
